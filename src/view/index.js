@@ -5,6 +5,15 @@ import { loginPage } from "../page/loginPage/loginPage";
 import { mainPage } from "../page/mainPage/index";
 import { registerPage } from "../page/registerPage/registerPage";
 import { resetPasswordPage } from "../page/resetPasswordPage/resetPass";
+import {
+  playBtn,
+  playSong,
+  pauseSong,
+  loadSong,
+  songList,
+  audio,
+  setAudio,
+} from "../controller/index";
 
 export let setAppActiveScreen = (screenName) => {
   let app = document.getElementById("app");
@@ -28,6 +37,24 @@ export let setAppActiveScreen = (screenName) => {
       if (app) {
         app.innerHTML = mainPage;
       }
+      let status = 0;
+      // play or pause song on click
+      const playPause = document.getElementsByClassName(
+        "musicBot-play-pause"
+      )[0];
+      const audioPlayer = document.getElementById("audio");
+      setAudio(audioPlayer);
+      loadSong(songList[0]);
+      // console.log(songList[1]);
+      playPause.addEventListener("click", () => {
+        if (status == 0) {
+          audio.play();
+          status = 1;
+        } else if (status == 1) {
+          audio.pause();
+          status = 0;
+        }
+      });
       break;
   }
 };
