@@ -1,0 +1,154 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.containerSignup {
+    width: 100%;
+    height: 100%;
+
+}
+
+.containerSignup .wrapperParrentSignup {
+    width: 500px;
+    height: 1100px;
+    margin: auto;
+}
+
+.containerSignup .logoSignup {
+    width: 200px;
+    height: 50px;
+    margin: auto;
+}
+
+.containerSignup .logoSignupImg {
+    width: 100%;
+}
+
+.containerSignup .textSignup {
+    margin-top: 15%;
+    font-size: 40px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.containerSignup .btnSignupFb {
+    width: 400px;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 50px;
+    outline-color: red;
+    background-color: blue;
+    color: white;
+    margin-left: 50px;
+    font-weight: bolder;
+    transition: 0.4s;
+    border: none;
+
+}
+
+.containerSignup .btnSignupFb:hover {
+    scale: 1.2;
+
+}
+
+.containerSignup .btnSignupGg {
+    margin-top: 20px;
+    width: 400px;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 50px;
+    outline-color: red;
+    background-color: white;
+    margin-left: 50px;
+    font-weight: bold;
+    color: #535353;
+    transition: 0.4s;
+    border: 3px solid #535353;
+
+
+}
+
+.containerSignup .btnSignupGg:hover {
+    scale: 1.2;
+}
+
+.containerSignup .text1 {
+    margin-top: 10px;
+    margin-left: 50px;
+    font-size: 30px;
+
+}
+
+.containerSignup .textFormSignup {
+    font-size: 20px;
+    font-weight: bolder;
+    margin-bottom: 10px;
+}
+
+.containerSignup .iFormSignup {
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+    padding-left: 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    /* outline-color: black; */
+}
+
+.containerSignup #btnRegister {
+    cursor: pointer;
+    width: 200px;
+    height: 50px;
+    margin-left: 150px;
+    background-color: #FEC213;
+    font-size: 30px;
+    border-radius: 50px;
+    border: none;
+    margin-top: 10px;
+    box-shadow: inset 0 -5px 5px rgba(236, 240, 17, 0.2),
+        0 5px 10px rgba(236, 240, 17, 0.2),
+        0 4px 5px rgba(0, 0, 0, 0.5);
+}
+
+.containerSignup #btnRegister:active {
+    box-shadow: inset 0 -10px 10px rgba(0, 0, 0, 0.025),
+        inset 0 5px 5px rgba(0, 0, 0, 0.15);
+}
+
+.containerSignup .login {
+    margin-top: 30px;
+    font-size: 20px;
+    margin-left: 100px;
+}
+
+.containerSignup .text2 {
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+#firstName-error-message {
+    font-size: 20px;
+    color: red;
+}
+
+#lastName-error-message {
+    font-size: 20px;
+    color: red;
+}
+
+#email-error-message {
+    font-size: 20px;
+    color: red;
+}
+
+#password-error-message {
+    font-size: 20px;
+    color: red;
+}
+
+#confirmPassword-error-message {
+    font-size: 20px;
+    color: red;
+}
