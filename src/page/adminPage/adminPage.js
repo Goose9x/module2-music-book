@@ -42,10 +42,10 @@ export let adminPage = /*html*/ `
 
           <div class="bottom-content">
             <li class="listAdmin log-out">
-              <a href="../sign-in/sign-in.html">
+              
                 <i class="bx bxs-log-out icon"></i>
                 <span class="text nav-text">Log out</span>
-              </a>
+              
             </li>
             <div class="bottom-content">
               <!-- <li class="log-out">

@@ -147,6 +147,11 @@ export let setAppActiveScreen = (screenName) => {
           .addEventListener("click", () => {
             setAppActiveScreen("adminCreationPage");
           });
+        document
+          .getElementsByClassName("log-out")[0]
+          .addEventListener("click", () => {
+            setAppActiveScreen("loginPage");
+          });
       }
       break;
 
@@ -509,8 +514,6 @@ export let adminGeneral = () => {
             </button>
           </td>
         </tr>`;
-        let a = document.getElementsByClassName("edit-btn");
-        console.log(a);
       });
 
       tableBody.innerHTML = html;
