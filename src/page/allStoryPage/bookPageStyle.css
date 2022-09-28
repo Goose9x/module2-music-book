@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.bookPage .boy-love h3 {
+    padding: 10px 10px;
+}
+
+.homePage .bookPage .boyLove {
+    display: flex;
+}
+
+.homePage .bookPage .boy-love .boyLove .item-list {
+    width: 100%;
+    margin-left: 10px;
+    height: 250px;
+    transition: 0.3s;
+}
+
+.homePage .bookPage .boy-love .boyLove .item-list:hover {
+    scale: 1.2;
+    border: 1px solid #E8C237;
+    cursor: pointer;
+}
+
+.homePage .bookPage .boy-love .boyLove .item-list:last-child {
+    margin-right: 10px;
+}
+
+.homePage .bookPage .boy-love .boyLove .item-list .img-btn {
+    height: calc(100% - 50px);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+
+.homePage .bookPage .boy-love .boyLove .item-list .name-btn {
+    width: 100%;
+    height: 50px;
+}
+
+.homePage .listbook-name {
+    padding: 7px 7px;
+
+}
+
+.homePage .listBook .search {
+    width: 100%;
+    padding: 20px 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.homePage .listBook .search #input-list {
+    width: 80%;
+    /* border: 1px solid grey; */
+    padding: 7px 7px;
+    margin-right: 3px;
+    border: none;
+}
+
+.homePage .name-btn {
+    border: none;
+}
+
+/* serach button */
+.homePage .search-btn {
+    padding: 7.5px 3px 7.5px 3px;
+    background-color: gray;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.homePage .search-btn:hover {
+    background-color: rgb(54, 52, 52);
+}

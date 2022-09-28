@@ -1,6 +1,5 @@
 import music1 from "../../music/Payphone.mp3";
-import music2 from "../../music/TamSuTuoi30.mp3";
-import music3 from "../../music/999DoaHong.mp3";
+
 
 
 import { renderErrorMessage, setAppActiveScreen } from "../view/index";
@@ -10,20 +9,7 @@ const prev = document.getElementsByClassName("musicBot-prev");
 const next = document.getElementsByClassName("musicBot-next");
 let audio = document.getElementById("audio");
 export { audio, setAudio,setTitle };
-export const songList = [
-  {
-    path: music2,
-    songName: "Tâm Sự Tuổi 30 Trịnh Thăng Bình",
-  },
-  {
-    path: music1,
-    songName: "Payphone",
-  },
-  {
-    path: music3,
-    songName: "999DoaHong",
-  },
-];
+
 export function loadSong(songList) {
   title[0].innerText = songList.songName;
   audio.src = `${songList.path}`;

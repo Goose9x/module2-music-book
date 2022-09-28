@@ -1,27 +1,39 @@
-import { bookPage } from "../page/bookPage/bookPage";
+import { bookPage } from "../page/allStoryPage/bookPage/bookPage";
 import { guidePage } from "../page/guidePage/guidePage";
-import { homePage } from "../page/homePage/homePage";
+import { homePage } from "../page/allStoryPage/homePage";
 import { loginPage } from "../page/loginPage/loginPage";
 import { mainPage } from "../page/mainPage/index";
 import { registerPage } from "../page/registerPage/registerPage";
 import { resetPasswordPage } from "../page/resetPasswordPage/resetPass";
 import { musicListPage } from "../page/musicListPage/musicListPage";
-import {
-  playBtn,
-  playSong,
-  pauseSong,
-  loadSong,
-  songList,
-  audio,
-  setAudio,
-  setTitle,
-} from "../controller/index";
+import { loadSong, audio, setAudio, setTitle } from "../controller/index";
+//truyện
+//DamMy
+import { reViewChu } from "../page/allStoryPage/bookPage/reviu/reviewdammy/chumuonduiom/index";
+import { reViewMaDao } from "../page/allStoryPage/bookPage/reviu/reviewdammy/madaotosu/index";
+import { reViewSauKetHon } from "../page/allStoryPage/bookPage/reviu/reviewdammy/saukhikethon/index";
+import { reViewVanNhanMe } from "../page/allStoryPage/bookPage/reviu/reviewdammy/vannhanme/index";
+import { reViewXuyenTieu } from "../page/allStoryPage/bookPage/reviu/reviewdammy/xuyenthanhtieu/index";
+//KinhDi
+import { reViewDaoQuy } from "../page/allStoryPage/bookPage/reviu/reviewkinhdi/daoquy/index";
+import { reViewHacAm } from "../page/allStoryPage/bookPage/reviu/reviewkinhdi/nhungkehacam/index";
+import { reViewNghiCan } from "../page/allStoryPage/bookPage/reviu/reviewkinhdi/phiasaunghican/index";
+import { reViewTenCuaTroChoi } from "../page/allStoryPage/bookPage/reviu/reviewkinhdi/tencuatrochoi/index";
+import { reViewVongTron } from "../page/allStoryPage/bookPage/reviu/reviewkinhdi/vongtronacnghiet/index";
+//NgonTinh
+import { reViewAnhTrang } from "../page/allStoryPage/bookPage/reviu/reviewngontinh/anhtrang/index";
+import { reViewCungNhauLon } from "../page/allStoryPage/bookPage/reviu/reviewngontinh/cungnhaulonlen/index";
+import { reViewStay } from "../page/allStoryPage/bookPage/reviu/reviewngontinh/olaicunganh/index";
+import { reViewTieuNhan } from "../page/allStoryPage/bookPage/reviu/reviewngontinh/truoclatieunhan/index";
+import { reViewYeu } from "../page/allStoryPage/bookPage/reviu/reviewngontinh/yeulamanh/index";
+// end
+
 import {
   validateLoginInfo,
   validateRegisterInfo,
   validateResetPassword,
 } from "../controller/index";
-import { getAllMusic } from "../model/index";
+import { getMusicList } from "../model/index";
 import swal from "sweetalert";
 
 export let alertSucces = (message) => {
@@ -122,6 +134,17 @@ export let setAppActiveScreen = (screenName) => {
       if (app) {
         app.innerHTML = mainPage;
       }
+      document
+        .getElementsByClassName("music_list")[0]
+        .addEventListener("click", () => {
+          setContentActiveScreen("musicListPage");
+        });
+      document
+        .getElementsByClassName("sign_out")[0]
+        .addEventListener("click", () => {
+          signOut();
+        });
+      setContentActiveScreen("guidePage");
       // getMusicStorage()
       let status = 0;
       // play or pause song on click
@@ -135,38 +158,51 @@ export let setAppActiveScreen = (screenName) => {
       const titleMusic = document.getElementsByClassName("musicBot-title");
       setTitle(titleMusic);
       setAudio(audioPlayer);
-      console.log(titleMusic);
-      loadSong(songList[0]);
-      let i = 0;
-      playPause.addEventListener("click", () => {
-        if (status == 0) {
+      let data = getMusicList().then((data) => {
+        console.log(data.music);
+        let songList = data.music;
+        loadSong(songList[0]);
+        let i = 0;
+        playPause.addEventListener("click", () => {
+          if (status == 0) {
+            audio.play();
+            status = 1;
+            playPause.innerHTML = `<ion-icon name="pause-outline"></ion-icon>`;
+            playPause.classList.add("active");
+          } else if (status == 1) {
+            audio.pause();
+            status = 0;
+            playPause.innerHTML = `<ion-icon name="play-outline"></ion-icon>`;
+            playPause.classList.remove("active");
+          }
+        });
+        prev.addEventListener("click", () => {
+          i--;
+          if (i < 0) {
+            i = songList.length - 1;
+          }
+          loadSong(songList[i]);
           audio.play();
-          status = 1;
-          playPause.innerHTML = `<ion-icon name="pause-outline"></ion-icon>`;
-          playPause.classList.add("active");
-        } else if (status == 1) {
-          audio.pause();
-          status = 0;
-          playPause.innerHTML = `<ion-icon name="play-outline"></ion-icon>`;
-          playPause.classList.remove("active");
-        }
+        });
+        next.addEventListener("click", () => {
+          i++;
+          if (i > songList.length - 1) {
+            i = 0;
+          }
+          loadSong(songList[i]);
+          audio.play();
+        });
       });
-      prev.addEventListener("click", () => {
-        i--;
-        if (i < 0) {
-          i = songList.length - 1;
-        }
-        loadSong(songList[i]);
-        audio.play();
+      // console.log(data);
+      document.getElementById("home-page-btn").addEventListener("click", () => {
+        setContentActiveScreen("homePage");
       });
-      next.addEventListener("click", () => {
-        i++;
-        if (i > songList.length - 1) {
-          i = 0;
-        }
-        loadSong(songList[i]);
-        audio.play();
-      });
+      document
+        .getElementById("guide-page-btn")
+        .addEventListener("click", () => {
+          setContentActiveScreen("guidePage");
+        });
+
       break;
     // List song
   }
@@ -178,6 +214,7 @@ export let setContentActiveScreen = (screenName) => {
       if (content) {
         content.innerHTML = homePage;
       }
+      loadReviewStory();
       break;
     case "guidePage":
       if (content) {
@@ -193,9 +230,86 @@ export let setContentActiveScreen = (screenName) => {
       if (content) {
         content.innerHTML = musicListPage;
       }
-      getAllMusic();
+      break;
+    case "reViewChu":
+      if (content) {
+        content.innerHTML = reViewChu;
+      }
+      break;
+    case "reViewMaDao":
+      if (content) {
+        content.innerHTML = reViewMaDao;
+      }
+      break;
+    case "reViewSauKetHon":
+      if (content) {
+        content.innerHTML = reViewSauKetHon;
+      }
+      break;
+    case "reViewVanNhanMe":
+      if (content) {
+        content.innerHTML = reViewVanNhanMe;
+      }
+      break;
+    case "reViewXuyenTieu":
+      if (content) {
+        content.innerHTML = reViewXuyenTieu;
+      }
+      break;
+    case "reViewDaoQuy":
+      if (content) {
+        content.innerHTML = reViewDaoQuy;
+      }
+      break;
+    case "reViewHacAm":
+      if (content) {
+        content.innerHTML = reViewHacAm;
+      }
+      break;
+    case "reViewNghiCan":
+      if (content) {
+        content.innerHTML = reViewNghiCan;
+      }
+      break;
+    case "reViewTenCuaTroChoi":
+      if (content) {
+        content.innerHTML = reViewTenCuaTroChoi;
+      }
+      break;
+    case "reViewVongTron":
+      if (content) {
+        content.innerHTML = reViewVongTron;
+      }
+      break;
+    case "reViewAnhTrang":
+      if (content) {
+        content.innerHTML = reViewAnhTrang;
+      }
+      break;
+    case "reViewCungNhauLon":
+      if (content) {
+        content.innerHTML = reViewCungNhauLon;
+      }
+      break;
+    case "reViewStay":
+      if (content) {
+        content.innerHTML = reViewStay;
+      }
+      break;
+    case "reViewTieuNhan":
+      if (content) {
+        content.innerHTML = reViewTieuNhan;
+      }
+      break;
+    case "reViewYeu":
+      if (content) {
+        content.innerHTML = reViewYeu;
+      }
+      break;
+    // getAllMusic();
   }
 };
+
 export let renderErrorMessage = (id, text) => {
   const errorMessage = document.getElementById(id);
   if (errorMessage) {
@@ -208,4 +322,22 @@ export let renderSuccessMessage = (id, text) => {
   if (successMessage) {
     successMessage.innerText = text;
   }
+};
+export let loadReviewStory = () => {
+  let list = document.getElementsByClassName("item-list");
+  console.log(list);
+  for (let item of list) {
+    item.addEventListener("click", (e) => {
+      console.log("aaa");
+      let userChoice = e.currentTarget.id;
+      console.log(userChoice);
+      setContentActiveScreen(`${userChoice}`);
+    });
+  }
+};
+export let signOut = () => {
+  setAppActiveScreen("loginPage");
+};
+export let alwaysHomepage = () => {
+  setContentActiveScreen("homePage");
 };

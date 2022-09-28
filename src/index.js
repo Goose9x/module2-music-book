@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { setAppActiveScreen, setContentActiveScreen } from "./view/index";
 import { getFirestore } from "firebase/firestore";
-import { getStorage } from "firebase/storage";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -20,7 +20,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 console.log(app);
 // Initialize Cloud Storage and get a reference to the service
-export const storage = getStorage(app);
+export const db = getFirestore(app);
+setAppActiveScreen("loginPage");
 
-setAppActiveScreen("mainPage");
-setContentActiveScreen("musicListPage");
+// setAppActiveScreen("mainPage");
+// setContentActiveScreen("homePage");

@@ -1,0 +1,22 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+#todayMusicList {
+    background-position: center center;
+    background-size: cover;
+}
+
+#todayMusicList .musicListTitle {
+    padding: 60px;
+    padding-left: 100px;
+    font-size: 50px;
+}
+
+#todayMusicList .musicList {
+    padding-left: 200px;
+    font-size: 30px;
+    padding-bottom: 75px;
+}

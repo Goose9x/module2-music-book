@@ -10,9 +10,15 @@ import {
   setAppActiveScreen,
   alertSucces,
 } from "../view/index";
-import { storage } from "../index";
-import { ref, listAll, getDownloadURL } from "firebase/storage";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../index";
 export let authUser = {};
+
+export let getMusicList = async () => {
+  const docRef = doc(db, "musicCollection", "MXkALEk429zlU4KjZHF3");
+  const docSnap = await getDoc(docRef);
+  return docSnap.data()
+};
 export let signIn = (email, password) => {
   const auth = getAuth();
   signInWithEmailAndPassword(auth, email, password)
@@ -75,49 +81,37 @@ export let resetPassword = (email) => {
       // ..
     });
 };
-
-export let getAllMusic = () => {
-  // Create a reference under which you want to list
-  const listRef = ref(storage, "music/");
-
-  // Find all the prefixes and items.
-  listAll(listRef)
-    .then((res) => {
-      res.prefixes.forEach((folderRef) => {
-        //   // All the prefixes under listRef.
-        //   // You may call listAll() recursively on them.
-        // listAll(folderRef);
-        // console.log(folderRef);
-      });
-      res.items.forEach((itemRef) => {
-        // All the items under listRef..ge
-        // console.log(itemRef);
-        getDownloadURL(itemRef).then((url) => {
-          console.log(itemRef);
-          console.log(url);
-        });
-        // .then((url) => {
-        //   // `url` is the download URL for 'images/stars.jpg'
-
-        //   // This can be downloaded directly:
-        //   const xhr = new XMLHttpRequest();
-        //   // xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-        //   xhr.responseType = "blob";
-        //   xhr.onload = (event) => {
-        //     const blob = xhr.response;
-        //   };
-        //   xhr.open("GET", url);
-        //   xhr.send();
-
-        //   console.log(url);
-        // })
-        // .catch((error) => {
-        //   // Handle any errors
-        // });
-      });
-    })
-    .catch((error) => {
-      // Uh-oh, an error occurred!
-      console.log(error);
-    });
-};
+// export const songArrayList = [];
+// export let getAllMusic = () => {
+//   // Create a reference under which you want to list
+//   const listRef = ref(storage, "music/");
+//   // Find all the prefixes and items.
+//   return listAll(listRef)
+//   .then((res) => {
+//     res.prefixes.forEach((folderRef) => {
+//       //   // All the prefixes under listRef.
+//       //   // You may call listAll() recursively on them.
+//     });
+//     res.items.forEach((itemRef) => {
+//       // All the items under listRef..ge
+//       // console.log(itemRef);
+//       getDownloadURL(itemRef).then((url) => {
+//         console.log(itemRef._location.path);
+//         console.log(url);
+//         songArrayList.push({
+//           path: url,
+//           songName: itemRef._location.path
+//             .replace("music/", "")
+//             .replace(".mp3", ""),
+//         });
+//       });
+//     });
+//   })
+//   .catch((error) => {
+//     // Uh-oh, an error occurred!
+//     console.log(error);
+//   })
+//   .finally(() => {
+//     console.log(songArrayList);
+//   });
+// };

@@ -52,7 +52,7 @@
 
 #menu .nav_menu .copy_right {
     font-size: 10px;
-    position: absolute;
+    position: fixed;
     bottom: 0px;
 }
 
@@ -65,16 +65,10 @@
     display: block;
 }
 
-/* Sign out button */
-#menu .nav_menu .sign_out {
-    position: absolute;
-    bottom: 10px;
-    /* right: 0px; */
-}
-
 #menu .nav_menu .menu_text:hover {
     background-color: #2e260b;
     color: white;
+    cursor: pointer;
 }
 
 /* Content */
@@ -92,8 +86,8 @@
     justify-content: center;
     justify-items: center;
     position: fixed;
-    bottom: 5px;
-    left: 55%;
+    bottom: 13px;
+    left: 32px;
 }
 
 #musicBot .musicBot-title {
@@ -149,9 +143,9 @@
 }
 
 .active {
-    color: #ff669a!important;
+    color: #ff669a !important;
     box-shadow: inset 0 -10px 10px rgba(0, 0, 0, 0.025),
-        inset 0 5px 5px rgba(0, 0, 0, 0.15)!important;
+        inset 0 5px 5px rgba(0, 0, 0, 0.15) !important;
 }
 
 #musicBot .musicBot-play-pause {

@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#yeu-nham-anh-main {
+    /* padding: auto; */
+    padding: 30px 100px 0px 100px;
+    width: 100%;
+    border: 1px solid black;
+}
+
+#yeu-nham-anh-main .title {
+    padding: 1%;
+    align-content: center;
+}
+
+#yeu-nham-anh-main .content-read {
+    width: 90%;
+    font-size: 25px;
+    padding: auto;
+    margin: auto;
+}
+
+#yeu-nham-anh-main .title .story-title {
+    color: brown;
+    text-align: center;
+    font-size: 25px;
+}
+
+#yeu-nham-anh-main .title .listMenu {
+    text-align: center;
+}
+
+#yeu-nham-anh-main .title p {
+    margin: auto;
+    text-align: center;
+}
+
+#yeu-nham-anh-main .content-search {
+    display: flex;
+    padding: 2%;
+    justify-content: center;
+}
+
+#yeu-nham-anh-main .content-search .left {
+    text-align: center;
+    margin-right: 0.5%;
+}
+
+#yeu-nham-anh-main .content-search .menu {
+    margin-right: 0.5%;
+}
+
+#yeu-nham-anh-main .content-search .setting {
+    margin-right: 0.5%;
+}
+
+#yeu-nham-anh-main .comment .textarea {
+    width: 60%;
+    height: 0.5%;
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin: auto;
+}
+
+#yeu-nham-anh-main.comment .textarea #commentUser {
+    width: 100%;
+}

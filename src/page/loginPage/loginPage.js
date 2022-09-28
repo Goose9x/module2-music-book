@@ -4,7 +4,7 @@ export let loginPage = /*html*/ `
 <div class="containerSignin">
 <div class="wrapperParrentSignin">
     <div class="logoSignin"><img class="logoSigninImg" alt="" src="${img}"></div>
-    <p class="textSignin">To continue, log in to MooSook.</p>
+    <p class="textSignin">To continue, login to MooSook.</p>
     <div ><button class="btnSigninFb">Continue with facebook</button></div>
     <div><button class="btnSigninGg">Continue with Google</button></div>
     <p class="text1">----------------- or ----------------</p>

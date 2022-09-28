@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#muondui-main {
+    /* padding: auto; */
+    padding: 30px 100px 0px 100px;
+    width: 100%;
+    border: 1px solid black;
+}
+
+#muondui-main .title {
+    padding: 1%;
+    align-content: center;
+}
+
+#muondui-main .content-read {
+    width: 90%;
+    font-size: 25px;
+    padding: auto;
+    margin: auto;
+}
+
+#muondui-main .title .story-title {
+    color: brown;
+    text-align: center;
+    font-size: 25px;
+}
+
+#muondui-main .title .listMenu {
+    text-align: center;
+}
+
+#muondui-main .title p {
+    margin: auto;
+    text-align: center;
+}
+
+#muondui-main .content-search {
+    display: flex;
+    padding: 2%;
+    justify-content: center;
+}
+
+#muondui-main .content-search .left {
+    text-align: center;
+    margin-right: 0.5%;
+}
+
+#muondui-main .content-search .menu {
+    margin-right: 0.5%;
+}
+
+#muondui-main .content-search .setting {
+    margin-right: 0.5%;
+}
+
+#muondui-main .comment .textarea {
+    width: 60%;
+    height: 0.5%;
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin: auto;
+}
+
+#muondui-main .comment .textarea #commentUser {
+    width: 100%;
+}
