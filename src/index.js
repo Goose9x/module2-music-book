@@ -21,7 +21,8 @@ const app = initializeApp(firebaseConfig);
 console.log(app);
 // Initialize Cloud Storage and get a reference to the service
 export const db = getFirestore(app);
-setAppActiveScreen("loginPage");
+// setAppActiveScreen("loginPage");
+setAppActiveScreen("adminPage");
 
 // setAppActiveScreen("mainPage");
 // setContentActiveScreen("homePage");

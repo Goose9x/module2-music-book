@@ -1,0 +1,267 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.form-heading-input{
+    /* background-image: url('https://images7.alphacoders.com/116/thumb-1920-1165584.jpg'); */
+    width: 100%;
+    height: 900px;
+    background-image: url(./IMG_3147.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+}
+.title-heading{
+    color: red;
+
+}
+.name-form{
+    margin-left: 20px;
+}
+
+.form-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.update-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.name{
+
+    border-color: black;
+    width: 300px;
+    height: 30px;
+    margin: 10px;
+    border-radius: 5px; 
+    
+}
+/* .name_film{
+
+    margin-left: 20px;
+    color:rgb(0, 0, 0) ;
+
+} */
+
+.title{
+    display: flex;
+    justify-content: center;
+   padding-top: 100px;
+    
+}
+
+.link-name_film{
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: #00000069;
+}
+
+
+.link_film{
+    padding: 5px;
+    width: 250px;
+    border-radius: 5px;
+    background-color:rgb(250 246 247) ;
+        
+}
+
+.name-content{
+    margin-left: 70px;
+    color: rgb(0, 0, 0);
+
+}
+
+.image-content{
+    width: 300px;
+    height: 30px;
+    margin: 10px;
+    border-radius: 5px;
+
+}
+.link-image{
+    margin-left: 10px;
+}
+.link-url{
+    margin-left: 10px;
+    margin-top: 20px;
+}
+.text-content{
+    display: flex;
+    padding: 5px 5px;
+}
+.url-name{
+    color: rgb(0, 0, 0);
+}
+
+.url-name_content{
+    color: rgb(0, 0, 0);
+    margin-left: 20px;
+}
+
+.url-link-content{
+    width: 300px;
+    height: 30px;
+    margin-left: 30px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding: 5px;
+    border: 1px solid #dcaaf169;
+    background-color:rgb(250 246 247)
+}
+
+.content{
+    margin-left: 100px;
+    margin-top: 10px ; 
+    width: 300px;
+    height: 150px;
+    border-radius: 5px;
+    padding: 5px;
+    background-color:rgb(250 246 247) ;
+    border-color: black;
+}
+
+.btn-create-value{
+    display: flex;
+    justify-content: center;
+}
+.btn-create{
+    margin-left: 70px;
+    margin-top: 20px;
+    width: 80px;
+    height: 30px;
+    border-radius: 5px;
+    color: black;
+    font-weight: 500;
+    background-color: rgb(255, 255, 255);
+}
+.btn-create:hover{
+background-color: rgb(244, 244, 245);
+transition: 0.3s;
+cursor: pointer;
+}
+.name-content-esp{
+    color: rgb(0, 0, 0);
+
+}
+.name-espoide{
+    margin-left: 50px;
+    
+}
+.authors{
+    margin-left: 3px;
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    background-color:rgb(250 246 247) ;
+}
+.time-text{
+    margin-left: 2px;
+    color: rgb(0, 0, 0);
+
+}
+.link-time{
+    margin-left: 50px;
+    margin-top: 20px;
+}
+.star-name{
+    color: rgb(0, 0, 0);
+
+}
+
+.link-star-content{
+    background-color:rgb(250 246 247) ;
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+.link-star{
+    margin-left: 50px;
+    margin-top: 20px;
+}
+
+.national-name{
+
+    color: rgb(250 246 247);
+
+
+}
+.link-international{
+    margin-left: 50px;
+    margin-top: 20px;  
+}
+.link-text-international{
+    background-color:rgb(250 246 247) ;
+    width: 300px;
+    height: 25px;
+    border-radius:5px;
+    margin-left: 15px;
+
+}
+
+.cate-name{
+    margin-left: 17px;
+    color: rgb(0, 0, 0);
+}
+.category{
+    margin-left: 50px;
+    margin-top: 20px;  
+}
+.link-category{
+    margin: 2px;
+    background-color:rgb(250 246 247) ;
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+}
+.link-year{
+    
+    margin: 20px;
+}
+.title-years{
+    margin-left: 5px;
+    color: rgb(0, 0, 0);
+
+}
+.link-time-year{
+
+    background-color:rgb(250 246 247) ;
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.group_form_2{
+    margin: auto;
+}
+.content{
+    margin: auto;
+    
+}
+.status {
+    width: 300px;
+    height: 30px;
+    margin-left: 3px;
+    border-radius: 5px;
+    border-color: black;
+}
+.name-contents{
+    margin-left: 30px;
+}
+.url {
+    width: 300px;
+    height: 30px;
+    margin-left: 3px;
+    border-radius: 5px;
+    border-color: black;
+}
+

@@ -6,6 +6,8 @@ import { mainPage } from "../page/mainPage/index";
 import { registerPage } from "../page/registerPage/registerPage";
 import { resetPasswordPage } from "../page/resetPasswordPage/resetPass";
 import { musicListPage } from "../page/musicListPage/musicListPage";
+import { adminPage } from "../page/adminPage/adminPage";
+import { adminCreationPage } from "../page/adminCreationPage/adminCreationPage";
 import { loadSong, audio, setAudio, setTitle } from "../controller/index";
 //truyện
 //DamMy
@@ -130,6 +132,24 @@ export let setAppActiveScreen = (screenName) => {
         });
       }
       break;
+    case "adminCreationPage":
+      if (app) {
+        app.innerHTML = adminCreationPage;
+        adminGeneral();
+      }
+      break;
+
+    case "adminPage":
+      if (app) {
+        app.innerHTML = adminPage;
+        document
+          .getElementsByClassName("createdGenBtn")[0]
+          .addEventListener("click", () => {
+            setAppActiveScreen("adminCreationPage");
+          });
+      }
+      break;
+
     case "mainPage":
       if (app) {
         app.innerHTML = mainPage;
@@ -340,4 +360,278 @@ export let signOut = () => {
 };
 export let alwaysHomepage = () => {
   setContentActiveScreen("homePage");
+};
+export let adminGeneral = () => {
+  // Create
+  let form = document.getElementById("update-form");
+  const idInput = document.getElementById("id");
+  const nameInput = document.getElementById("name");
+  const contentInput = document.getElementById("content");
+  const urlInput = document.getElementById("url");
+  const authorsInput = document.getElementById("authors");
+  const statusInput = document.getElementById("status");
+  const categoryInput = document.getElementById("category");
+  const yearInput = document.getElementById("year");
+  const imageInput = document.getElementById("image");
+
+  if (form) {
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      // let image = document.getElementById("image").files[0];
+      const music = {
+        id: idInput.value,
+        name: nameInput.value,
+        descrition: contentInput.value,
+        url: urlInput.value,
+        time: authorsInput.value,
+        actor: statusInput.value,
+        category: categoryInput.value,
+        year: yearInput.value,
+        image: imageInput.value,
+      };
+      validate(music);
+      saveToLocalStorage(music);
+    });
+
+    const validate = (music) => {
+      if (!music.name) {
+        return false;
+      }
+      if (!music.descrition) {
+        return false;
+      }
+      if (!music.episode) {
+        return false;
+      }
+      if (!music.time) {
+        return false;
+      }
+      if (!music.actor) {
+        return false;
+      }
+
+      if (!music.category) {
+        return false;
+      }
+      if (!music.year) {
+        return false;
+      }
+      if (!music.image) {
+        return false;
+      }
+
+      return true;
+    };
+
+    const saveToLocalStorage = (music) => {
+      let storage = JSON.parse(localStorage.getItem("musics")) ?? [];
+
+      let currentId = parseInt(localStorage.getItem("currentId") ?? 0);
+
+      if (music.id) {
+        const index = storage.findIndex((item) => {
+          return parseInt(item.id) === parseInt(music.id);
+        });
+
+        storage[index] = music;
+      } else {
+        music.id = currentId + 1;
+        storage.push(music);
+      }
+
+      localStorage.setItem("musics", JSON.stringify(storage));
+      localStorage.setItem("currentId", JSON.stringify(currentId + 1));
+      setAppActiveScreen("adminPage");
+    };
+  }
+
+  document.addEventListener("DOMContentLoaded", function (event) {
+    const url_str = window.location.href;
+    const url = new URL(url_str);
+    const search_params = url.searchParams;
+    const id = search_params.get("id");
+
+    if (id) {
+      const music = getMusicById(parseInt(id));
+      loadEditForm(music);
+    }
+  });
+
+  const getMusicById = (id) => {
+    let storage = JSON.parse(localStorage.getItem("musics")) ?? [];
+
+    return (
+      storage.find((data) => {
+        return parseInt(data.id) === parseInt(id);
+      }) ?? null
+    );
+  };
+
+  const loadEditForm = (music) => {
+    idInput.value = music.id;
+    nameInput.value = music.name;
+    contentInput.value = music.descrition;
+    urlInput.value = music.url;
+    authorsInput.value = music.authors;
+    statusInput.value = music.status;
+    categoryInput.value = music.category;
+    yearInput.value = music.year;
+    imageInput.value = music.image;
+  };
+  document
+    .getElementById("update-form")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+      const tableBody = document.getElementsByTagName("tbody")[0];
+      const musics = JSON.parse(localStorage.getItem("musics"));
+
+      let html = "";
+
+      musics.forEach((music) => {
+        html += `
+        <tr>
+          <td>${music.id}</td>    
+          <td>${music.name}</td>    
+          <td>${music.content}</td>
+          <td>${music.comment}</td>
+          <td>${music.authors}</td>
+          <td>${music.status}</td>
+          <td>${music.category}</td>
+          <td>${music.year}</td>
+          <td>${music.image}</td>
+          <td>${music.url}</td>
+          <td>
+            <button class="edit-btn" onclick="show(${music.id})">
+              edit
+            </button>
+            <button class="delete-btn" onclick="deleteMusic(${music.id})">
+              delete
+            </button>
+          </td>
+        </tr>`;
+        let a = document.getElementsByClassName("edit-btn");
+        console.log(a);
+      });
+
+      tableBody.innerHTML = html;
+    });
+
+  const show = (id) => {
+    window.location.href = `../create/index.html?id=${id}`;
+  };
+
+  const deleteMusic = (id) => {
+    let storage = JSON.parse(localStorage.getItem("musics")) ?? [];
+    const index = storage.findIndex((item) => {
+      return parseInt(item.id) === parseInt(id);
+    });
+    storage.splice(index, 1);
+    localStorage.setItem("musics", JSON.stringify(storage));
+
+    window.location.reload();
+  };
+};
+let storageTouch = () => {
+  // // Create
+  // let form = document.getElementById("update-form");
+  // const idInput = document.getElementById("id");
+  // const nameInput = document.getElementById("name");
+  // const contentInput = document.getElementById("content");
+  // const urlInput = document.getElementById("url");
+  // const authorsInput = document.getElementById("authors");
+  // const statusInput = document.getElementById("status");
+  // const categoryInput = document.getElementById("category");
+  // const yearInput = document.getElementById("year");
+  // const imageInput = document.getElementById("image");
+  // if (form) {
+  //   form.addEventListener("submit", function (event) {
+  //     event.preventDefault();
+  //     // let image = document.getElementById("image").files[0];
+  //     const music = {
+  //       id: idInput.value,
+  //       name: nameInput.value,
+  //       descrition: contentInput.value,
+  //       url: urlInput.value,
+  //       time: authorsInput.value,
+  //       actor: statusInput.value,
+  //       category: categoryInput.value,
+  //       year: yearInput.value,
+  //       image: imageInput.value,
+  //     };
+  //     validate(music);
+  //     saveToLocalStorage(music);
+  //   });
+  //   const validate = (music) => {
+  //     if (!music.name) {
+  //       return false;
+  //     }
+  //     if (!music.descrition) {
+  //       return false;
+  //     }
+  //     if (!music.episode) {
+  //       return false;
+  //     }
+  //     if (!music.time) {
+  //       return false;
+  //     }
+  //     if (!music.actor) {
+  //       return false;
+  //     }
+  //     if (!music.category) {
+  //       return false;
+  //     }
+  //     if (!music.year) {
+  //       return false;
+  //     }
+  //     if (!music.image) {
+  //       return false;
+  //     }
+  //     return true;
+  //   };
+  //   const saveToLocalStorage = (music) => {
+  //     let storage = JSON.parse(localStorage.getItem("musics")) ?? [];
+  //     let currentId = parseInt(localStorage.getItem("currentId") ?? 0);
+  //     if (music.id) {
+  //       const index = storage.findIndex((item) => {
+  //         return parseInt(item.id) === parseInt(music.id);
+  //       });
+  //       storage[index] = music;
+  //     } else {
+  //       music.id = currentId + 1;
+  //       storage.push(music);
+  //     }
+  //     localStorage.setItem("musics", JSON.stringify(storage));
+  //     localStorage.setItem("currentId", JSON.stringify(currentId + 1));
+  //     setAppActiveScreen("adminPage");
+  //   };
+  // }
+  // document.addEventListener("DOMContentLoaded", function (event) {
+  //   const url_str = window.location.href;
+  //   const url = new URL(url_str);
+  //   const search_params = url.searchParams;
+  //   const id = search_params.get("id");
+  //   if (id) {
+  //     const music = getMusicById(parseInt(id));
+  //     loadEditForm(music);
+  //   }
+  // });
+  // const getMusicById = (id) => {
+  //   let storage = JSON.parse(localStorage.getItem("musics")) ?? [];
+  //   return (
+  //     storage.find((data) => {
+  //       return parseInt(data.id) === parseInt(id);
+  //     }) ?? null
+  //   );
+  // };
+  // loadEditForm = (music) => {
+  //   idInput.value = music.id;
+  //   nameInput.value = music.name;
+  //   contentInput.value = music.descrition;
+  //   urlInput.value = music.url;
+  //   authorsInput.value = music.authors;
+  //   statusInput.value = music.status;
+  //   categoryInput.value = music.category;
+  //   yearInput.value = music.year;
+  //   imageInput.value = music.image;
+  // };
 };
