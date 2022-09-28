@@ -1,1 +1,2 @@
-export let guidePage = /*html*/ ``;
+export let guidePage = /*html*/ `
+<div>aaaaaaa</div>`;

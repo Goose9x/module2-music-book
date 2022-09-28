@@ -5,6 +5,7 @@ import { loginPage } from "../page/loginPage/loginPage";
 import { mainPage } from "../page/mainPage/index";
 import { registerPage } from "../page/registerPage/registerPage";
 import { resetPasswordPage } from "../page/resetPasswordPage/resetPass";
+import { musicListPage } from "../page/musicListPage/musicListPage";
 import {
   playBtn,
   playSong,
@@ -20,6 +21,7 @@ import {
   validateRegisterInfo,
   validateResetPassword,
 } from "../controller/index";
+import { getAllMusic } from "../model/index";
 import swal from "sweetalert";
 
 export let alertSucces = (message) => {
@@ -120,12 +122,13 @@ export let setAppActiveScreen = (screenName) => {
       if (app) {
         app.innerHTML = mainPage;
       }
-      getMusicStorage()
+      // getMusicStorage()
       let status = 0;
       // play or pause song on click
       const playPause = document.getElementsByClassName(
         "musicBot-play-pause"
       )[0];
+
       const prev = document.getElementsByClassName("musicBot-prev")[0];
       const next = document.getElementsByClassName("musicBot-next")[0];
       const audioPlayer = document.getElementById("audio");
@@ -165,6 +168,7 @@ export let setAppActiveScreen = (screenName) => {
         audio.play();
       });
       break;
+    // List song
   }
 };
 export let setContentActiveScreen = (screenName) => {
@@ -185,6 +189,11 @@ export let setContentActiveScreen = (screenName) => {
         content.innerHTML = bookPage;
       }
       break;
+    case "musicListPage":
+      if (content) {
+        content.innerHTML = musicListPage;
+      }
+      getAllMusic();
   }
 };
 export let renderErrorMessage = (id, text) => {
